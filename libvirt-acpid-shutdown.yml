@@ -12,3 +12,4 @@
         name: "{{ item }}"
         state: shutdown
       with_items: "{{ running_vms['list_vms'] }}"
+      when: not ansible_check_mode
