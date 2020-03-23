@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  tasks:
+    - name: Get all running VMs
+      virt:
+        command: list_vms
+        state: running
+      register: running_vms
+    - name: Shutdown all running VMs
+      virt:
+        name: "{{ item }}"
+        state: shutdown
+      with_items: "{{ running_vms['list_vms'] }}"
