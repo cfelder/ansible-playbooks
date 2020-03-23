@@ -7,7 +7,7 @@
     - name: Shutdown host
       become: yes
       shell:
-        cmd: "shutdown -c && shutdown -h now"
+        cmd: "shutdown -c &>/dev/null ; shutdown -h now"
       async: 1
       poll: 0
     - name: Store target host ip
